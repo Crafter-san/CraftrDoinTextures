@@ -25,15 +25,15 @@ jobs:
       - name: Generate UUID
         id: generate_uuid
         run: |
-          TestUUID=$(uuidgen)
-          echo "UUID=TestUUID" >> $GITHUB_OUTPUT
+          
+          echo "UUID=$(uuidgen)" >> $GITHUB_OUTPUT
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ steps.generate_uuid.outputs.value }} # Replace with your desired tag
+          tag_name: ${{ steps.generate_uuid.outputs.UUID }} # Replace with your desired tag
           release_name: Resourcepack Release
           draft: false
           prerelease: false
