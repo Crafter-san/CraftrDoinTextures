@@ -25,7 +25,8 @@ jobs:
       - name: Generate UUID
         id: generate_uuid
         run: |
-          echo "UUID=$(uuidgen)" >> $GITHUB_OUTPUT
+          TestUUID=$(uuidgen)
+          echo "UUID=TestUUID" >> $GITHUB_OUTPUT
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
