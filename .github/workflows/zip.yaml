@@ -14,15 +14,15 @@ jobs:
 
       - name: Create zip archive of folder contents
         run: |
-         cd texturepack
+          # cd texturepack
           # Navigate into the target folder
           # Zip all contents within 'my_folder' into 'archive.zip'
           # The -r flag makes it recursive to include subdirectories and files
           # The '.' specifies to zip the current directory's contents
-          zip -r ../CraftrDoinTextures.zip . 
+          # zip -r ../CraftrDoinTextures.zip . 
 
       - name: Upload zip artifact
         uses: actions/upload-artifact@v4 # Use the latest version
         with:
-          name: zipped-contents
-          path: CraftrDoinTextures.zip
+          name: CraftrDoinTextures
+          path: texturepack
