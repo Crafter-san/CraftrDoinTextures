@@ -1,0 +1,28 @@
+name: Zip Folder Contents
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  zip-contents:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4 # Use the latest version
+
+      - name: Create zip archive of folder contents
+        run: |
+          # Navigate into the target folder
+          cd my_folder 
+          # Zip all contents within 'my_folder' into 'archive.zip'
+          # The -r flag makes it recursive to include subdirectories and files
+          # The '.' specifies to zip the current directory's contents
+          zip -r ../archive.zip . 
+
+      - name: Upload zip artifact
+        uses: actions/upload-artifact@v4 # Use the latest version
+        with:
+          name: zipped-contents
+          path: archive.zip
