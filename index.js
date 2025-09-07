@@ -7,8 +7,8 @@ function download_blob() {
 }
 async function get_contents () {
 	const sha_response = await fetch("https://api.github.com/repos/Crafter-san/CraftrDoinTextures/branches/main");
-	const sha = await sha_response.json().commit.sha;
-	const contents_response = await fetch("https://api.github.com/repos/Crafter-san/CraftrDoinTextures/git/trees/" + sha + "?recursive=true");
+	const sha = await sha_response.json();
+	const contents_response = await fetch("https://api.github.com/repos/Crafter-san/CraftrDoinTextures/git/trees/" + sha.commit.sha + "?recursive=true");
 	const contents = await contents_response.json();
 	return contents;
 }
