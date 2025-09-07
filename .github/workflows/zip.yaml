@@ -14,6 +14,7 @@ jobs:
 
       - name: Create zip archive of folder contents
         run: |
+         cd texturepack
           # Navigate into the target folder
           # Zip all contents within 'my_folder' into 'archive.zip'
           # The -r flag makes it recursive to include subdirectories and files
