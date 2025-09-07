@@ -22,14 +22,18 @@ jobs:
           # The '.' specifies to zip the current directory's contents
           zip -r ../CraftrDoinTextures.zip .
 
-
+      - name: Generate UUID
+        id: generate_uuid
+        run: |
+          UUID=$(uuidgen)
+          echo "::set-output name=value::$UUID"
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: zipped # Replace with your desired tag
+          tag_name: ${{ steps.generate_uuid.outputs.value }} # Replace with your desired tag
           release_name: Resourcepack Release
           draft: false
           prerelease: false
