@@ -22,6 +22,18 @@ jobs:
           # The '.' specifies to zip the current directory's contents
           zip -r ../CraftrDoinTextures.zip .
 
+
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: zipped # Replace with your desired tag
+          release_name: Resourcepack Release
+          draft: false
+          prerelease: false
+          
       - name: Upload specific file to release
         uses: actions/upload-release-asset@v1
         env:
