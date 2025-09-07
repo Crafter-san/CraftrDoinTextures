@@ -12,7 +12,6 @@ jobs:
         contents: write
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
         run: |
           cd texturepack
           # Navigate into the target folder
