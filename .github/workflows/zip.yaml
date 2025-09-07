@@ -38,12 +38,12 @@ jobs:
           draft: false
           prerelease: false
           
-      - name: Upload specific file to release
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ github.event.release.upload_url }} # Use the upload URL from the release event
-          asset_path: CraftrDoinTextures.zip # Replace with the actual path to your file
-          asset_name: specific-file.zip # The name of the asset in the release
-          asset_content_type: application/zip # Adjust content type as needed
+      #- name: Upload specific file to release
+       # uses: actions/upload-release-asset@v1
+       # env:
+       #   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+       # with:
+       #   upload_url: ${{ github.event.release.upload_url }} # Use the upload URL from the release event
+       #   asset_path: CraftrDoinTextures.zip # Replace with the actual path to your file
+       #   asset_name: specific-file.zip # The name of the asset in the release
+       #   asset_content_type: application/zip # Adjust content type as needed
