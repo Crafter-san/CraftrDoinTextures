@@ -12,21 +12,21 @@ jobs:
         contents: write
     steps:
       - name: Checkout code
-            uses: actions/checkout@v4
-            run: |
-              cd texturepack
-              # Navigate into the target folder
-              # Zip all contents within 'my_folder' into 'archive.zip'
-              # The -r flag makes it recursive to include subdirectories and files
-              # The '.' specifies to zip the current directory's contents
-              zip -r ../CraftrDoinTextures.zip .
+        uses: actions/checkout@v4
+        run: |
+          cd texturepack
+          # Navigate into the target folder
+          # Zip all contents within 'my_folder' into 'archive.zip'
+          # The -r flag makes it recursive to include subdirectories and files
+          # The '.' specifies to zip the current directory's contents
+          zip -r ../CraftrDoinTextures.zip .
 
-          - name: Upload specific file to release
-            uses: actions/upload-release-asset@v1
-            env:
-              GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-            with:
-              upload_url: ${{ github.event.release.upload_url }} # Use the upload URL from the release event
-              asset_path: CraftrDoinTextures.zip # Replace with the actual path to your file
-              asset_name: specific-file.zip # The name of the asset in the release
-              asset_content_type: application/zip # Adjust content type as needed
+      - name: Upload specific file to release
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ github.event.release.upload_url }} # Use the upload URL from the release event
+          asset_path: CraftrDoinTextures.zip # Replace with the actual path to your file
+          asset_name: specific-file.zip # The name of the asset in the release
+          asset_content_type: application/zip # Adjust content type as needed
