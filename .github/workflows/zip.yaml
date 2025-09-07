@@ -8,28 +8,27 @@ on:
 jobs:
   zip-contents:
     runs-on: ubuntu-latest
+    permissions:
+        contents: write
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4 # Use the latest version
+      - name: Checkout code
+            uses: actions/checkout@v4
 
-      - name: Create zip archive of folder contents
-        run: |
-          cd texturepack
-          # Navigate into the target folder
-          # Zip all contents within 'my_folder' into 'archive.zip'
-          # The -r flag makes it recursive to include subdirectories and files
-          # The '.' specifies to zip the current directory's contents
-          zip -r ../CraftrDoinTextures.zip .
+          - name: zip
+            run: |
+              cd texturepack
+              # Navigate into the target folder
+              # Zip all contents within 'my_folder' into 'archive.zip'
+              # The -r flag makes it recursive to include subdirectories and files
+              # The '.' specifies to zip the current directory's contents
+              zip -r ../CraftrDoinTextures.zip .
 
-      - name: Upload zip artifact
-        uses: softprops/action-gh-release@v1 # Use the latest version
-        with:
-          files: CraftrDoinTextures.zip
-          tag_name: zipped
-        if: github.ref == 'refs/heads/master'
-        
-      - name: Release to tag
-        uses: softprops/action-gh-release@v1
-        with:
-            files: CraftrDoinTextures.zip
-        if: startsWith(github.ref, 'refs/tags/')
+          - name: Upload specific file to release
+            uses: actions/upload-release-asset@v1
+            env:
+              GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            with:
+              upload_url: ${{ github.event.release.upload_url }} # Use the upload URL from the release event
+              asset_path: CraftrDoinTextures.zip # Replace with the actual path to your file
+              asset_name: specific-file.zip # The name of the asset in the release
+              asset_content_type: application/zip # Adjust content type as needed
