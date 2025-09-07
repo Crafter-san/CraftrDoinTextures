@@ -20,6 +20,7 @@ jobs:
           # The -r flag makes it recursive to include subdirectories and files
           # The '.' specifies to zip the current directory's contents
           # zip -r ../CraftrDoinTextures.zip . 
+          #HUHHH?
 
       - name: Upload zip artifact
         uses: actions/upload-artifact@v4 # Use the latest version
