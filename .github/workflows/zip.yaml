@@ -15,7 +15,6 @@ jobs:
       - name: Create zip archive of folder contents
         run: |
           # Navigate into the target folder
-          cd . 
           # Zip all contents within 'my_folder' into 'archive.zip'
           # The -r flag makes it recursive to include subdirectories and files
           # The '.' specifies to zip the current directory's contents
