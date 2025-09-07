@@ -7,14 +7,14 @@ function download_blob() {
 }
 async function get_contents () {
 	const sha_response = await fetch("https://api.github.com/repos/Crafter-san/CraftrDoinTextures/branches/main");
-	const sha = await response.json().sha;
+	const sha = await sha_response.json().sha;
 	const contents_response = await fetch("https://api.github.com/repos/Crafter-san/CraftrDoinTextures/git/trees/" + sha + "?recursive=true");
-	const contents = await response.json();
+	const contents = await contents_response.json();
 	return contents;
 }
 async function get_blob (sha) {
 	const contents_response = await fetch("https://api.github.com/repos/Crafter-san/CraftrDoinTextures/branches/git/blobs/" + sha);
-	const contents = await response.json();
+	const contents = await contents_response.json();
 	return contents;
 }
 async function zip () {
